@@ -1,0 +1,485 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 400px;
+  height: 70px;
+  background-color: white;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 1000;
+}
+
+.home-header {
+  position: relative;
+  padding: 15px 20px;
+  border-bottom: 3px solid #4f8cff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 0.75rem 0.75rem;  
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);  
+}
+
+.home-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+}
+
+.settings-icon {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #000;
+  font-size: 24px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.settings-icon:hover {
+  opacity: 0.7;
+}
+
+/* Body */
+html,
+body {
+  height: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #d4e6ff 0%, #c4e0ff 100%);
+  color: #000000;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Logo */
+.logo-icon {
+  stroke: #000000;
+  width: 32px;
+  height: 32px;
+  stroke-width: 2;
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000000;
+  margin: 0;
+}
+
+/* Container */
+.container {
+  max-width: 400px;
+  margin: 90px auto 0 auto;
+  padding: 15px 16px;
+  background: linear-gradient(135deg, #4f8cff 0%, #6ee7f8 100%);
+  border-radius: 30px;
+  box-shadow: 0 8px 16px rgba(79, 140, 255, 0.3); /* Added stronger shadow with blue tint */
+  width: 90vw;
+  box-sizing: border-box;
+  margin-bottom: 0;
+  padding-top: 10px;
+}
+
+/* Balance Card */
+.balance-card {
+  position: relative;
+  top: 0;
+  margin-bottom: 15px;
+  padding: 15px 15px 15px 0;
+  margin-left: 0;
+}
+.balance-card p {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #000;
+  font-weight: 500; /* Added medium weight for better readability */
+}
+
+.balance-card h2 {
+  font-size: 28px;
+  font-weight: 600; /* Changed to semi-bold */
+}
+
+.balance-card .username,
+.balance-card p,
+.balance-card h2 {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.balance-card .username {
+  font-size: 24px;
+  font-weight: 700; /* Changed to bold */
+  color: #000000;
+  margin-bottom: 8px;
+  letter-spacing: 0.2px;
+}
+
+.balance-card .username strong {
+  font-weight: 700; /* Match the parent font-weight */
+}
+
+/* Action Buttons */
+.actions-icons {
+  position: relative;
+  top: -20px;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  z-index: 1;
+}
+
+.btn {
+  flex: 1;
+  margin: 0 5px;
+  padding: 15px;
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background-color: #a990f1;
+}
+
+/* Navbar bawah */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 400px;
+  height: 60px;
+  background: linear-gradient(135deg, #e6f3ff 0%, #dcf0ff 100%);
+  border-top: 3px solid #4f8cff;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 0;
+  z-index: 100;
+  flex-shrink: 0;
+}
+
+/* QRIS */
+.nav-btn[aria-label="Scan QRIS"] {
+  background: linear-gradient(135deg, #4f8cff 0%, #6ee7f8 100%);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  position: relative;
+  top: -15px; /* dari -30px menjadi -15px agar lebih ke bawah */
+  margin: 0 10px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.nav-btn[aria-label="Scan QRIS"] img.icon {
+  width: 30px; /* dari 30px menjadi 35px */
+  height: 30px; /* dari 30px menjadi 35px */
+  margin: 0;
+  filter: none; /* hapus filter agar icon tetap hitam */
+}
+
+.nav-btn[aria-label="Scan QRIS"] span {
+  display: none; /* menyembunyikan text di bawah icon */
+}
+
+.bottom-nav .nav-btn img.icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 4px;
+  object-fit: contain;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  font-size: 12px;
+  color: #666;
+  cursor: pointer;
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.3s;
+  font-weight: 600;
+}
+
+.nav-btn .icon {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+}
+
+.nav-btn.active,
+.nav-btn:hover {
+  color: #4f8cff; /* Ubah dari #a990f1 ke #4f8cff */
+  font-weight: 700;
+}
+
+/* Shortcut */
+.shortcuts {
+  margin-top: 16px; /* this is the gap we want to match */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 8px;
+  padding: 0 20px;
+}
+
+.shortcut-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #ffffff; /* Changed to white */
+  border-radius: 12px;
+  border: 2px solid rgba(79, 140, 255, 0.3);
+  cursor: pointer;
+  padding: 14px 8px;
+  height: 80px;
+  font-size: 13px;
+  color: #000000; 
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(79, 140, 255, 0.2);
+}
+
+.shortcut-btn:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: linear-gradient(135deg, #6ee7f8 0%, #4f8cff 100%);
+  box-shadow: 0 6px 12px rgba(79, 140, 255, 0.4);
+  transform: translateY(-2px);
+  color: #000000; 
+}
+
+/* Tambahkan style untuk icon feather */
+.shortcut-btn i {
+  width: 28px; 
+  height: 28px; 
+  stroke-width: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000; 
+  stroke: #000000; 
+}
+
+.shortcut-btn:hover i {
+  color: #ffffff; 
+  stroke: #ffffff;
+}
+
+/* Pastikan semua icon memiliki ukuran yang sama */
+[data-feather] {
+  width: 28px !important; 
+  height: 28px !important; 
+}
+
+/* Promo */
+.promo-section {
+  margin-top: 12px; 
+  margin-bottom: 70px;
+  padding-bottom: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.promo-section h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 15px;
+  padding-left: 5px;
+}
+
+.promo-list {
+  display: flex;
+  gap: 15px;
+  animation: slide-left 20s linear infinite;
+  /* hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-x: hidden;
+  width: max-content;
+}
+
+/* Animasi geser ke kiri sebanyak total isi */
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(
+      calc(-100% / 2)
+    ); 
+  }
+}
+
+.promo-card {
+  min-width: 280px;
+  background: rgb(255, 244, 244); 
+  border-radius: 15px;
+  border: 2px solid rgb(255, 255, 255);
+  box-shadow: 0 4px 12px rgb(255, 255, 255);
+  flex-shrink: 0;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.promo-card:hover {
+  border-color: transparent; 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px); 
+}
+
+.promo-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.promo-info {
+  display: none;
+}
+
+.promo-info {
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.8); 
+}
+
+.promo-info h4 {
+  color: #ffffff;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.promo-info p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+
+/* Action */
+.actions-icons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  color: #000000;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #000;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.actions-icons {
+  position: relative;
+  top: -8px;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  display: flex;
+  justify-content: space-around;
+  gap: 12px;
+}
+
+.action-btn,
+.shortcut-btn {
+  min-width: 48px;
+  min-height: 48px;
+  padding: 8px;
+}
+
+.shortcut-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px; 
+  background: #ffffff; 
+  border-radius: 12px;
+  border: 2px solid rgba(79, 140, 255, 0.3);
+  cursor: pointer;
+  padding: 14px 8px;
+  height: 80px;
+  font-size: 13px;
+  color: #000000; 
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(79, 140, 255, 0.2);
+}
+
+a {
+  text-decoration: none;
+  color: inherit; 
+}
+
+a:hover {
+  text-decoration: underline; 
+}
+
+.back-link {
+  text-decoration: none;
+  color: #a990f1;
+  font-weight: bold;
+  padding: 15px;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: #4f8cff; 
+  text-decoration: underline;
+}

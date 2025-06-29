@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <title>TME - Login/Daftar</title>
+    <link rel="stylesheet" href="../css/landing.css" />
+  </head>
+  <body>
+    <!-- Main Container -->
+    <div class="container">
+      <h2 id="form-title">Login</h2>
+
+      <!-- Username Input -->
+      <input
+        type="text"
+        id="username"
+        placeholder="Username"
+        autocomplete="username"
+        autocapitalize="none"
+        spellcheck="false"
+        enterkeyhint="next"
+      />
+
+      <!-- Password Input -->
+      <input
+        type="password"
+        id="password"
+        placeholder="Password"
+        autocomplete="current-password"
+        enterkeyhint="done"
+      />
+
+      <!-- Submit Button -->
+      <button id="submit-btn">Login</button>
+
+      <!-- Notification Message -->
+      <p class="message" id="notif-msg"></p>
+
+      <!-- Toggle Link -->
+      <div class="toggle-link">
+        <p id="toggle-text">Belum punya akun?</p>
+        <a id="toggle-form">Daftar di sini</a>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/landing.js"></script>
+  </body>
+</html>

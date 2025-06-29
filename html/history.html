@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>History - TME Wallet</title>
+    <link rel="stylesheet" href="../css/history.css" />
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script defer src="../js/history.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="history-header">
+      <a
+        href="home.html"
+        class="back-icon"
+        onclick="goBack(); return false;"
+        aria-label="Kembali ke Home"
+      >
+        <i data-feather="arrow-left"></i>
+      </a>
+      <h1 class="history-title">History</h1>
+      <span class="spacer"></span>
+    </header>
+
+    <!-- Main Content -->
+    <section class="history-content">
+      <!-- Filter Tabs -->
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">Semua</button>
+        <button class="filter-tab" data-filter="topup">Top Up</button>
+        <button class="filter-tab" data-filter="send">Transfer</button>
+        <button class="filter-tab" data-filter="withdraw">Withdraw</button>
+      </div>
+
+      <!-- Transaction List -->
+      <div class="transaction-list" id="transactionList">
+        <!-- Transactions will be loaded here -->
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="emptyState" style="display: none">
+        <i data-feather="file-text"></i>
+        <h3>Belum Ada Transaksi</h3>
+        <p>Transaksi Anda akan muncul di sini</p>
+      </div>
+    </section>
+
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>

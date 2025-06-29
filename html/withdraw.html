@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Withdraw - TME</title>
+  <!-- Link ke file CSS kustom Anda -->
+  <link rel="stylesheet" href="../css/withdraw.css" />
+  <!-- Feather Icons untuk ikon vektor -->
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+
+  <!-- Bagian header untuk halaman penarikan -->
+  <header class="withdraw-header">
+    <!-- Ikon kembali untuk navigasi ke halaman beranda -->
+    <a href="home.html" class="back-icon" aria-label="Kembali">
+      <i data-feather="arrow-left"></i>
+    </a>
+    <!-- Judul halaman -->
+    <h1 class="withdraw-title">Withdraw</h1>
+  </header>
+
+  <!-- Kontainer utama untuk metode penarikan -->
+  <div class="container withdraw-method">
+
+    <!-- Kotak terpisah untuk judul "Metode Penarikan" telah dihapus sepenuhnya -->
+
+    <!-- Bagian untuk Transfer Bank -->
+    <div class="method-group">
+      <p class="method-subtitle">Transfer Bank</p>
+      <div class="bank-options">
+        <!-- Opsi tombol radio untuk berbagai bank -->
+        <label class="bank-option">
+          <input type="radio" name="method" value="BCA" />
+          <div class="bank-option-content">
+            <img src="https://placehold.co/24x24/e0f2f7/005670?text=BCA" alt="Logo BCA" class="bank-logo" />
+            <span>BCA</span>
+          </div>
+        </label>
+        <label class="bank-option">
+          <input type="radio" name="method" value="BNI" />
+          <div class="bank-option-content">
+            <img src="https://placehold.co/24x24/e2f2e0/007000?text=BNI" alt="Logo BNI" class="bank-logo" />
+            <span>BNI</span>
+          </div>
+        </label>
+        <label class="bank-option">
+          <input type="radio" name="method" value="Mandiri" />
+          <div class="bank-option-content">
+            <img src="https://placehold.co/24x24/f7e0e0/8c0000?text=Mandiri" alt="Logo Mandiri" class="bank-logo" />
+            <span>Mandiri</span>
+          </div>
+        </label>
+        <label class="bank-option">
+          <input type="radio" name="method" value="BRI" />
+          <div class="bank-option-content">
+            <img src="https://placehold.co/24x24/f7f2e0/705600?text=BRI" alt="Logo BRI" class="bank-logo" />
+            <span>BRI</span>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Bagian untuk E-Wallet -->
+    <div class="method-group">
+      <p class="method-subtitle">E-Wallet</p>
+      <div class="bank-options">
+        <!-- Opsi tombol radio untuk berbagai e-wallet -->
+        <label class="bank-option">
+          <input type="radio" name="method" value="TME" />
+        </label>
+        <label class="bank-option">
+          <input type="radio" name="method" value="Dana" />
+          <div class="bank-option-content">
+            <img src="https://placehold.co/24x24/e9dff7/6a3e9c?text=Dana" alt="Logo Dana" class="bank-logo" />
+            <span>Dana</span>
+          </div>
+        </label>
+        <label class="bank-option">
+          <input type="radio" name="method" value="Gopay" />
+          <div class="bank-option-content">
+            <img src="https://placehold.co/24x24/e0f7e0/007000?text=Gopay" alt="Logo Gopay" class="bank-logo" />
+            <span>Gopay</span>
+          </div>
+        </label>
+        <label class="bank-option">
+          <input type="radio" name="method" value="ShopeePay" />
+          <div class="bank-option-content">
+            <img src="https://placehold.co/24x24/f7e0e0/8c0000?text=ShopeePay" alt="Logo ShopeePay" class="bank-logo" />
+            <span>ShopeePay</span>
+          </div>
+        </label>
+        <label class="bank-option">
+          <input type="radio" name="method" value="OVO" />
+          <div class="bank-option-content">
+            <img src="https://placehold.co/24x24/e0f0f7/005a8f?text=Ovo" alt="Logo OVO" class="bank-logo" />
+            <span>OVO</span>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Bagian untuk penarikan Tunai via Token -->
+    <div class="method-group">
+      <p class="method-subtitle">Ambil menggunakan Token</p>
+      <div class="bank-options">
+        <!-- Opsi tombol radio untuk penarikan berbasis token -->
+        <label class="bank-option">
+          <input type="radio" name="method" value="ATM Bersama" />
+          <div class="bank-option-content">
+            <img src="https://placehold.co/24x24/f0e0f7/5a008f?text=ATM" alt="Logo ATM Bersama" class="bank-logo" />
+            <span>ATM Bersama</span>
+          </div>
+        </label>
+        <label class="bank-option">
+          <input type="radio" name="method" value="Indomaret" />
+          <div class="bank-option-content">
+            <img src="https://placehold.co/24x24/f7e9e0/9c5a3e?text=Indomaret" alt="Logo Indomaret" class="bank-logo" />
+            <span>Indomaret</span>
+          </div>
+        </label>
+        <label class="bank-option">
+          <input type="radio" name="method" value="Alfamart" />
+          <div class="bank-option-content">
+            <img src="https://placehold.co/24x24/e0f7f7/007070?text=Alfamart" alt="Logo Alfamart" class="bank-logo" />
+            <span>Alfamart</span>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Area notifikasi untuk menampilkan pesan kepada pengguna -->
+    <div id="notif" class="notif">
+      <span id="notif-message"></span>
+    </div>
+
+    <!-- Bagian yang berisi tombol lanjutkan -->
+    <div class="submit-section">
+      <button class="btn-continue" id="continueBtn">Lanjutkan</button>
+    </div>
+
+    <!-- Link ke file JavaScript kustom Anda -->
+    <script src="../js/withdraw.js"></script>
+</body>
+</html>

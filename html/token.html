@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generate Token - TME Wallet</title>
+    <link rel="stylesheet" href="../css/token.css" />
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script defer src="../js/token.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="token-header">
+      <a href="home.html" class="back-icon" aria-label="Kembali ke Home">
+        <i data-feather="arrow-left"></i>
+      </a>
+      <h1 class="token-title">Generate Token</h1>
+      <span class="spacer"></span>
+    </header>
+
+    <!-- Main Content -->
+    <section class="token-content">
+      <!-- User Balance -->
+      <div class="balance-card">
+        <div class="balance-info">
+          <span class="balance-label">Saldo Anda</span>
+          <span class="balance-amount" id="userBalance">Rp 0</span>
+        </div>
+      </div>
+
+      <!-- Generate Token Form -->
+      <div class="token-form-card">
+        <h2>Generate Token Withdraw</h2>
+        <p class="form-description">
+          Generate token untuk withdraw uang tunai di ATM atau kasir
+        </p>
+
+        <form id="tokenForm">
+          <div class="form-group">
+            <label for="withdrawAmount">Jumlah Withdraw</label>
+            <input
+              type="number"
+              id="withdrawAmount"
+              placeholder="Masukkan jumlah"
+              min="10000"
+              step="1000"
+              required
+            />
+            <small>Minimum withdraw Rp 10.000</small>
+          </div>
+
+          <div class="form-group">
+            <label for="tokenNote">Catatan (Opsional)</label>
+            <input
+              type="text"
+              id="tokenNote"
+              placeholder="Catatan untuk token ini"
+              maxlength="50"
+            />
+          </div>
+
+          <button type="submit" class="generate-btn">
+            <i data-feather="key"></i>
+            Generate Token
+          </button>
+        </form>
+      </div>
+
+      <!-- Generated Token Display -->
+      <div id="tokenDisplay" class="token-display hidden">
+        <div class="token-card">
+          <div class="token-header-info">
+            <i data-feather="shield-check"></i>
+            <h3>Token Berhasil Dibuat</h3>
+          </div>
+
+          <div class="token-details">
+            <div class="token-code">
+              <label>Kode Token</label>
+              <div class="token-value" id="generatedToken">
+                <span id="tokenCode"></span>
+                <button
+                  class="copy-btn"
+                  onclick="copyToken()"
+                  aria-label="Copy Token"
+                >
+                  <i data-feather="copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="token-info">
+              <div class="info-row">
+                <span class="info-label">Jumlah:</span>
+                <span class="info-value" id="tokenAmount"></span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Berlaku hingga:</span>
+                <span class="info-value" id="tokenExpiry"></span>
+              </div>
+              <div class="info-row" id="tokenNoteRow" style="display: none">
+                <span class="info-label">Catatan:</span>
+                <span class="info-value" id="tokenNoteDisplay"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="token-instructions">
+            <h4>Cara Menggunakan:</h4>
+            <ul>
+              <li>Tunjukkan kode token ini ke kasir</li>
+              <li>Atau gunakan di ATM TME Wallet</li>
+              <li>Token berlaku selama 24 jam</li>
+              <li>Token hanya bisa digunakan sekali</li>
+            </ul>
+          </div>
+
+          <button class="new-token-btn" onclick="createNewToken()">
+            Buat Token Baru
+          </button>
+        </div>
+      </div>
+
+      <!-- Active Tokens -->
+      <div class="active-tokens">
+        <h3>Token Aktif</h3>
+        <div id="activeTokensList">
+          <!-- Active tokens will be populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <i data-feather="check-circle" class="success-icon"></i>
+          <h3>Token Berhasil Disalin!</h3>
+        </div>
+        <div class="modal-body">
+          <p>Kode token telah disalin ke clipboard Anda.</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-primary" onclick="closeModal()">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>

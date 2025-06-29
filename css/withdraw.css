@@ -1,0 +1,239 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #4f8cff 0%, #6ee7f8 100%);
+  color: #000000;
+}
+
+/* Body */
+body {
+  font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.withdraw-header {
+  background-color: #ffffff;
+  color: #000000;
+  position: relative;
+  padding: 15px 24px;
+  border-bottom: 1px solid #a990f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 0.75rem 0.75rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.back-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(79, 140, 255, 0.1);
+  color: #4f8cff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.back-icon:hover {
+  background: rgba(79, 140, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.withdraw-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a202c;
+  flex: 1;
+  text-align: center;
+  margin: 0 10px;
+  margin-left: -40px;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 480px) {
+  .withdraw-title {
+    font-size: 20px;
+    margin-left: -40px;
+  }
+}
+
+.spacer {
+  width: 40px;
+}
+
+/* Kontainer utama untuk metode penarikan, hanya untuk tata letak */
+.container.withdraw-method {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 0 16px;
+}
+
+/* Aturan CSS untuk .method-title dihapus karena elemennya tidak ada lagi di HTML */
+
+/* Setiap grup metode */
+.method-group {
+  margin-bottom: 25px;
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+}
+
+/* Sub-judul dalam grup metode (misal: Transfer Bank) */
+.method-subtitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000;
+  margin: 0 0 10px;
+  text-align: left;
+}
+
+/* Opsi bank/e-wallet/token */
+.bank-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Styling untuk setiap item opsi */
+.bank-option {
+  display: block;
+  cursor: pointer;
+}
+
+/* Menyembunyikan radio button asli */
+.bank-option input[type="radio"] {
+  display: none;
+}
+
+/* Container */
+.bank-option-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #f1f1f1;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  width: 100%;
+  min-height: 48px;
+  color: #374151;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Styling logo */
+.bank-logo {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  flex-shrink: 0;
+  border-radius: 4px;
+}
+
+/* Styling teks opsi */
+.bank-option-content span {
+  font-size: 16px;
+  color: #374151;
+  font-weight: 500;
+  flex-grow: 1;
+  text-align: left;
+}
+
+/* Hover state untuk konten opsi */
+.bank-option-content:hover {
+  background-color: #e5e7eb;
+}
+
+/* Styling saat opsi dipilih */
+.bank-option input[type="radio"]:checked + .bank-option-content {
+  background: linear-gradient(135deg, #4f8cff 0%, #6ee7f8 100%);
+  color: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Menyesuaikan warna teks dan logo saat opsi dipilih */
+.bank-option input[type="radio"]:checked + .bank-option-content span,
+.bank-option input[type="radio"]:checked + .bank-option-content .bank-logo {
+  color: #ffffff;
+  filter: brightness(1);
+}
+
+/* Hover state saat opsi sudah dipilih */
+.bank-option input[type="radio"]:checked + .bank-option-content:hover {
+  background-color: #4f46e5;
+}
+
+.notif {
+  color: #b91c1c;
+  background-color: #fee2e2;
+  border: 1px solid #fca5a5;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  display: none;
+  text-align: center;
+  font-size: 14px;
+  position: relative;
+}
+
+.close-notif {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Submit Section */
+.submit-section {
+  max-width: 400px;
+  margin: 20px auto 60px auto;
+  padding: 0 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-continue {
+  width: 100%;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-continue:hover {
+  background: linear-gradient(135deg, #4f8cff 0%, #6ee7f8 100%);
+  transform: scale(1.05);
+}
+
+/* Extra space for scroll */
+body::after {
+  content: "";
+  display: block;
+  height: 10px;
+}

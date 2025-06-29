@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notifikasi - TME Wallet</title>
+    <link rel="stylesheet" href="../css/notification.css" />
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script defer src="../js/notification.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="notification-header">
+      <a
+        href="home.html"
+        class="back-icon"
+        onclick="goBack(); return false;"
+        aria-label="Kembali ke Home"
+      >
+        <i data-feather="arrow-left"></i>
+      </a>
+      <h1 class="notification-title">Notification</h1>
+      <span class="spacer"></span>
+    </header>
+
+    <!-- Main Content -->
+    <section class="notification-content">
+      <!-- Empty State -->
+      <div id="empty-state" class="empty-state">
+        <div class="empty-icon">
+          <i data-feather="bell-off"></i>
+        </div>
+        <h3>Belum Ada Notifikasi</h3>
+        <p>Notifikasi transaksi dan aktivitas Anda akan muncul di sini</p>
+      </div>
+
+      <!-- Notification List -->
+      <div
+        id="notification-list"
+        class="notification-list"
+        style="display: none"
+      >
+        <!-- Notifications will be populated by JavaScript -->
+      </div>
+    </section>
+
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>

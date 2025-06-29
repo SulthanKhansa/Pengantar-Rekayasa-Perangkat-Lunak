@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel - TME</title>
+    <link rel="stylesheet" href="admin.css" />
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Admin</h1>
+
+      <!-- User List Section -->
+      <section>
+        <h2>
+          <i data-feather="users"></i>
+          Daftar User
+        </h2>
+        <div id="user-list" class="user-list">Memuat...</div>
+      </section>
+
+      <!-- Token Redeem Section -->
+      <section class="redeem-section">
+        <h2>
+          <i data-feather="key"></i>
+          Redeem Token
+        </h2>
+        <div class="redeem-form">
+          <div class="form-group">
+            <label for="tokenCode">Kode Token</label>
+            <input
+              type="text"
+              id="tokenCode"
+              placeholder="Masukkan kode token (contoh: ABCD-EFGH-IJKL)"
+              maxlength="14"
+              style="text-transform: uppercase"
+            />
+          </div>
+          <button onclick="redeemToken()" class="btn-redeem">
+            <i data-feather="check-circle"></i>
+            Redeem Token
+          </button>
+        </div>
+
+        <div id="redeemResult" class="redeem-result hidden">
+          <!-- Redeem result will be shown here -->
+        </div>
+      </section>
+
+      <!-- Token List Section -->
+      <section>
+        <h2>
+          <i data-feather="list"></i>
+          Daftar Token
+        </h2>
+        <div id="token-list" class="token-list">Memuat...</div>
+      </section>
+    </div>
+
+    <script>
+      feather.replace();
+    </script>
+    <script src="admin.js"></script>
+  </body>
+</html>

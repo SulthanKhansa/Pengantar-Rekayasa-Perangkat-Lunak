@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TME - E-Wallet</title>
+    <link rel="stylesheet" href="../css/home.css" />
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="header-logo">
+      <i data-feather="credit-card" class="logo-icon"></i>
+      <h1 class="logo-text">TME</h1>
+      <a href="setting.html" class="settings-icon" aria-label="Setting">
+        <i data-feather="settings"></i>
+      </a>
+    </header>
+
+    <!-- Container utama -->
+    <div class="container">
+      <!-- Balance Card -->
+      <section class="balance-card">
+        <p class="username">Hi, <strong id="user-name">...</strong></p>
+        <p>Saldo Anda</p>
+        <h2>Rp <span id="user-balance">0</span></h2>
+      </section>
+
+      <!-- Action Buttons -->
+      <section class="actions-icons">
+        <a href="topup.html" class="action-btn" aria-label="Top Up">
+          <i data-feather="plus-circle"></i>
+          <span>Top Up</span>
+        </a>
+        <a href="send.html" class="action-btn" aria-label="Send">
+          <i data-feather="send"></i>
+          <span>Send</span>
+        </a>
+        <a href="withdraw.html" class="action-btn" aria-label="Withdraw">
+          <i data-feather="arrow-down"></i>
+          <span>Withdraw</span>
+        </a>
+      </section>
+    </div>
+
+    <!-- Shortcut Section -->
+    <section class="shortcuts">
+      <button class="shortcut-btn">
+        <i data-feather="wifi"></i>
+        <span>Internet</span>
+      </button>
+      <button class="shortcut-btn">
+        <i data-feather="zap"></i>
+        <span>Listrik</span>
+      </button>
+      <button class="shortcut-btn" onclick="window.location.href='family.html'">
+        <i data-feather="users"></i>
+        <span>Family</span>
+      </button>
+      <button class="shortcut-btn">
+        <i data-feather="tv"></i>
+        <span>TV Kabel</span>
+      </button>
+      <button class="shortcut-btn">
+        <i data-feather="droplet"></i>
+        <span>Air</span>
+      </button>
+      <button class="shortcut-btn">
+        <i data-feather="target"></i>
+        <span>Games</span>
+      </button>
+      <button class="shortcut-btn">
+        <i data-feather="book"></i>
+        <span>Pendidikan</span>
+      </button>
+      <button class="shortcut-btn">
+        <i data-feather="star"></i>
+        <span>Points</span>
+      </button>
+    </section>
+
+    <!-- Promo Section -->
+    <section class="promo-section" style="margin-top: 32px">
+      <div class="promo-list">
+        <div class="promo-card">
+          <img src="../img/topup.jpeg" alt="Promo 1" />
+        </div>
+        <div class="promo-card">
+          <img src="../img/listrik.webp" alt="Promo 2" />
+        </div>
+        <div class="promo-card">
+          <img src="../img/game.jpg" alt="Promo Games" />
+        </div>
+        <div class="promo-card">
+          <img src="../img/pulsa2.jpeg" alt="Promo 3" />
+        </div>
+        <div class="promo-card">
+          <img src="../img/topup.jpeg" alt="Promo 1" />
+        </div>
+        <div class="promo-card">
+          <img src="../img/listrik.webp" alt="Promo 2" />
+        </div>
+        <div class="promo-card">
+          <img src="../img/game.jpg" alt="Promo Games" />
+        </div>
+        <div class="promo-card">
+          <img src="../img/pulsa2.jpeg" alt="Promo 3" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Navbar Bawah -->
+    <nav class="bottom-nav">
+      <button class="nav-btn active" aria-label="Home">
+        <i data-feather="home"></i>
+      </button>
+      <button
+        class="nav-btn"
+        aria-label="History"
+        onclick="window.location.href='history.html'"
+      >
+        <i data-feather="file-minus"></i>
+      </button>
+      <button
+        class="nav-btn"
+        aria-label="Scan QRIS"
+        onclick="window.location.href='scan-qris.html'"
+      >
+        <img
+          src="https://static.thenounproject.com/png/4522488-200.png"
+          alt="Scan QR"
+          class="icon"
+        />
+      </button>
+      <button
+        class="nav-btn"
+        aria-label="Notif"
+        onclick="window.location.href='notification.html'"
+      >
+        <i data-feather="bell"></i>
+      </button>
+      <a href="user.html" class="nav-btn" aria-label="Akun">
+        <i data-feather="user"></i>
+      </a>
+    </nav>
+
+    <!-- Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        feather.replace();
+
+        const currentUser = localStorage.getItem("current_user");
+        const users = JSON.parse(localStorage.getItem("tme_users") || "{}");
+
+        if (!currentUser || !users[currentUser]) {
+          alert("Anda harus login terlebih dahulu.");
+          window.location.href = "landing.html";
+          return;
+        }
+
+        const user = users[currentUser];
+        document.getElementById("user-name").textContent = currentUser;
+        document.getElementById("user-balance").textContent = parseInt(
+          user.balance || 0
+        ).toLocaleString("id-ID");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transfer Berhasil - TME</title>
+  <link rel="stylesheet" href="../css/transfer-success.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="success-card">
+      <div class="success-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 12l2 2 4-4"/>
+          <circle cx="12" cy="12" r="10"/>
+        </svg>
+      </div>
+      
+      <h1>Transfer Berhasil!</h1>
+      
+      <div class="transfer-details">
+        <div class="detail-item">
+          <span class="label">Kepada:</span>
+          <span class="value" id="recipient-name">Loading...</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Jumlah:</span>
+          <span class="value" id="transfer-amount">Loading...</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Saldo Tersisa:</span>
+          <span class="value" id="remaining-balance">Loading...</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Waktu:</span>
+          <span class="value" id="transfer-time">Loading...</span>
+        </div>
+      </div>
+      
+      <div class="button-group">
+        <button onclick="goToHome()" class="btn btn-primary">Kembali ke Home</button>
+        <button onclick="transferAgain()" class="btn btn-secondary">Transfer Lagi</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/transfer-success.js"></script>
+</body>
+</html>

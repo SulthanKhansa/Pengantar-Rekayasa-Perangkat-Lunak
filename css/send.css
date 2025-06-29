@@ -1,0 +1,302 @@
+/* Reset box-sizing */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(135deg, #4f8cff 0%, #6ee7f8 100%);
+  color: #000;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Header */
+.transfer-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  color: #1a202c;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.back-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(79, 140, 255, 0.1);
+  color: #4f8cff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.back-icon:hover {
+  background: rgba(79, 140, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.transfer-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a202c;
+  flex: 1;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.spacer {
+  width: 40px;
+}
+
+/* Main Content */
+.transfer-bank {
+  margin: 40px 20px 60px 20px;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  min-height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+}
+
+.transfer-bank h2 {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2d3748;
+  background: linear-gradient(135deg, #4f8cff, #6ee7f8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.transfer-bank input {
+  width: 100%;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 16px;
+  background: #f7fafc;
+  outline: none;
+  transition: all 0.3s ease;
+  color: #2d3748;
+}
+
+.transfer-bank input:focus {
+  border-color: #4f8cff;
+  background: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(79, 140, 255, 0.15);
+}
+
+.transfer-bank input::placeholder {
+  color: #a0aec0;
+}
+
+/* Notification */
+.notif {
+  color: #e53e3e;
+  background: linear-gradient(135deg, #fed7d7, #feb2b2);
+  border: 1px solid #fc8181;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  display: none;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Amount Options */
+.amount-options {
+  margin: 20px 0;
+  flex: 1;
+}
+
+.amount-options h3 {
+  margin-bottom: 16px;
+  font-size: 16px;
+  color: #4a5568;
+  text-align: center;
+  font-weight: 600;
+}
+
+.amount-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.amount-btn {
+  padding: 16px 12px;
+  border: 2px solid #e2e8f0;
+  background: linear-gradient(135deg, #f7fafc, #edf2f7);
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #2d3748;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.amount-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.amount-btn:hover::before {
+  left: 100%;
+}
+
+.amount-btn:hover {
+  border-color: #cbd5e0;
+  background: linear-gradient(135deg, #edf2f7, #e2e8f0);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.amount-btn.selected {
+  border-color: #4f8cff;
+  background: linear-gradient(135deg, #4f8cff, #6ee7f8);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 140, 255, 0.4);
+}
+
+/* Submit Button */
+.btn {
+  width: 100%;
+  background: linear-gradient(135deg, #4f8cff, #6ee7f8);
+  color: white;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(79, 140, 255, 0.4);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 480px) {
+  .transfer-bank {
+    margin: 30px 10px 50px 10px;
+    padding: 20px;
+    border-radius: 16px;
+    min-height: calc(100vh - 180px);
+  }
+
+  .amount-grid {
+    gap: 10px;
+  }
+
+  .amount-btn {
+    padding: 14px 10px;
+    font-size: 14px;
+    min-height: 50px;
+  }
+
+  .transfer-header {
+    padding: 12px 16px;
+  }
+
+  .transfer-title {
+    font-size: 20px;
+  }
+}
+
+/* Safe area for notched phones */
+@supports (padding: max(0px)) {
+  .transfer-header {
+    padding-top: max(15px, env(safe-area-inset-top));
+  }
+
+  .transfer-bank {
+    margin-bottom: max(60px, env(safe-area-inset-bottom));
+  }
+}
+
+/* Landscape orientation */
+@media (orientation: landscape) and (max-height: 500px) {
+  .transfer-bank {
+    margin: 20px 20px 40px 20px;
+    min-height: calc(100vh - 160px);
+    padding: 15px;
+  }
+
+  .amount-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .amount-btn {
+    min-height: 45px;
+    padding: 12px 8px;
+    font-size: 13px;
+  }
+}

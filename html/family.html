@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Family Account - TME Wallet</title>
+    <link rel="stylesheet" href="../css/family.css" />
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script defer src="../js/family.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="family-header">
+      <a
+        href="home.html"
+        class="back-icon"
+        onclick="goBack(); return false;"
+        aria-label="Kembali ke Home"
+      >
+        <i data-feather="arrow-left"></i>
+      </a>
+      <h1 class="family-title">Family Account</h1>
+      <button
+        class="add-member-btn"
+        onclick="openAddMember()"
+        aria-label="Tambah Anggota"
+      >
+        <i data-feather="user-plus"></i>
+      </button>
+    </header>
+
+    <!-- Main Content -->
+    <section class="family-content">
+      <!-- Family Overview -->
+      <div class="family-overview">
+        <div class="family-card">
+          <div class="family-info">
+            <div class="family-icon">
+              <i data-feather="users"></i>
+            </div>
+            <div class="family-details">
+              <h3 id="family-name">Family Account</h3>
+              <p id="member-count">0 Anggota</p>
+            </div>
+          </div>
+          <div class="family-balance">
+            <div class="balance-label">Saldo Bersama</div>
+            <div class="balance-amount" id="family-balance">Rp 0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="quick-actions">
+        <button class="action-btn" onclick="openFamilySavings()">
+          <div class="action-icon savings">
+            <i data-feather="dollar-sign"></i>
+          </div>
+          <span>Tabungan Bersama</span>
+        </button>
+        <button class="action-btn" onclick="openQuickTransfer()">
+          <div class="action-icon transfer">
+            <i data-feather="send"></i>
+          </div>
+          <span>Transfer Cepat</span>
+        </button>
+        <button class="action-btn" onclick="openFamilyGoals()">
+          <div class="action-icon goals">
+            <i data-feather="target"></i>
+          </div>
+          <span>Target Bersama</span>
+        </button>
+      </div>
+
+      <!-- Family Members -->
+      <div class="family-section">
+        <h3 class="section-title">Anggota Keluarga</h3>
+        <div class="member-list" id="memberList">
+          <!-- Members will be populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Recent Activities -->
+      <div class="family-section">
+        <div class="section-header">
+          <h3 class="section-title">Aktivitas Terbaru</h3>
+          <button class="see-all-btn" onclick="openFamilyHistory()">
+            Lihat Semua
+          </button>
+        </div>
+        <div class="activity-list" id="activityList">
+          <!-- Activities will be populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Add Member Modal -->
+    <div id="addMemberModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Tambah Anggota Keluarga</h3>
+          <button class="close-btn" onclick="closeAddMember()">
+            <i data-feather="x"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Username TME Wallet</label>
+            <input
+              type="text"
+              id="memberUsername"
+              placeholder="Masukkan username"
+            />
+          </div>
+          <div class="form-group">
+            <label>Peran dalam Keluarga</label>
+            <select id="memberRole">
+              <option value="member">Anggota</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+          <div id="addMemberError" class="error-message"></div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" onclick="closeAddMember()">
+            Batal
+          </button>
+          <button class="btn-primary" onclick="addMember()">
+            Tambah Anggota
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Family Savings Modal -->
+    <div id="familySavingsModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Tabungan Bersama</h3>
+          <button class="close-btn" onclick="closeFamilySavings()">
+            <i data-feather="x"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="savings-overview">
+            <div class="savings-total">
+              <div class="total-label">Total Tabungan</div>
+              <div class="total-amount">Rp 0</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Jumlah Setoran</label>
+            <input
+              type="number"
+              id="savingsAmount"
+              placeholder="Masukkan jumlah"
+            />
+          </div>
+          <div class="form-group">
+            <label>Catatan (Opsional)</label>
+            <input
+              type="text"
+              id="savingsNote"
+              placeholder="Untuk apa tabungan ini?"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" onclick="closeFamilySavings()">
+            Batal
+          </button>
+          <button class="btn-primary" onclick="addToSavings()">
+            Setor ke Tabungan
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Transfer Modal -->
+    <div id="quickTransferModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Transfer Cepat</h3>
+          <button class="close-btn" onclick="closeQuickTransfer()">
+            <i data-feather="x"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Pilih Anggota</label>
+            <select id="transferRecipient">
+              <option value="">Pilih penerima</option>
+              <!-- Will be populated by JavaScript -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Jumlah Transfer</label>
+            <input
+              type="number"
+              id="transferAmount"
+              placeholder="Masukkan jumlah"
+            />
+          </div>
+          <div class="form-group">
+            <label>Pesan (Opsional)</label>
+            <input
+              type="text"
+              id="transferMessage"
+              placeholder="Pesan untuk penerima"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" onclick="closeQuickTransfer()">
+            Batal
+          </button>
+          <button class="btn-primary" onclick="sendQuickTransfer()">
+            Kirim
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>

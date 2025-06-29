@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Setting - TME Wallet</title>
+    <link rel="stylesheet" href="../css/setting.css" />
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script defer src="../js/setting.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="setting-header">
+      <a
+        href="home.html"
+        class="back-icon"
+        onclick="goBack(); return false;"
+        aria-label="Kembali ke Home"
+      >
+        <i data-feather="arrow-left"></i>
+      </a>
+      <h1 class="setting-title">Setting</h1>
+      <span class="spacer"></span>
+    </header>
+
+    <!-- Main Content -->
+    <section class="setting-content">
+      <!-- Profile Section -->
+      <div class="setting-section">
+        <h3 class="section-title">Profil</h3>
+        <div class="setting-list">
+          <div class="setting-item" onclick="openProfile()">
+            <div class="setting-icon">
+              <i data-feather="user"></i>
+            </div>
+            <div class="setting-details">
+              <div class="setting-name">Informasi Akun</div>
+              <div class="setting-desc">Kelola informasi profil Anda</div>
+            </div>
+            <i data-feather="chevron-right" class="arrow-icon"></i>
+          </div>
+
+          <div class="setting-item" onclick="changePassword()">
+            <div class="setting-icon">
+              <i data-feather="lock"></i>
+            </div>
+            <div class="setting-details">
+              <div class="setting-name">Ubah Password</div>
+              <div class="setting-desc">Ganti password akun Anda</div>
+            </div>
+            <i data-feather="chevron-right" class="arrow-icon"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Security Section -->
+      <div class="setting-section">
+        <h3 class="section-title">Keamanan</h3>
+        <div class="setting-list">
+          <div class="setting-item" onclick="toggleBiometric()">
+            <div class="setting-icon">
+              <i data-feather="fingerprint"></i>
+            </div>
+            <div class="setting-details">
+              <div class="setting-name">Biometric Login</div>
+              <div class="setting-desc">Login dengan sidik jari</div>
+            </div>
+            <div class="toggle-switch">
+              <input type="checkbox" id="biometric-toggle" />
+              <label for="biometric-toggle"></label>
+            </div>
+          </div>
+
+          <div class="setting-item" onclick="setPIN()">
+            <div class="setting-icon">
+              <i data-feather="shield"></i>
+            </div>
+            <div class="setting-details">
+              <div class="setting-name">PIN Transaksi</div>
+              <div class="setting-desc">Atur PIN untuk transaksi</div>
+            </div>
+            <i data-feather="chevron-right" class="arrow-icon"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- App Settings -->
+      <div class="setting-section">
+        <h3 class="section-title">Aplikasi</h3>
+        <div class="setting-list">
+          <div class="setting-item" onclick="toggleNotification()">
+            <div class="setting-icon">
+              <i data-feather="bell"></i>
+            </div>
+            <div class="setting-details">
+              <div class="setting-name">Notifikasi</div>
+              <div class="setting-desc">Kelola notifikasi push</div>
+            </div>
+            <div class="toggle-switch">
+              <input type="checkbox" id="notification-toggle" checked />
+              <label for="notification-toggle"></label>
+            </div>
+          </div>
+
+          <div class="setting-item" onclick="setLanguage()">
+            <div class="setting-icon">
+              <i data-feather="globe"></i>
+            </div>
+            <div class="setting-details">
+              <div class="setting-name">Bahasa</div>
+              <div class="setting-desc">Indonesia</div>
+            </div>
+            <i data-feather="chevron-right" class="arrow-icon"></i>
+          </div>
+
+          <div class="setting-item" onclick="setTheme()">
+            <div class="setting-icon">
+              <i data-feather="moon"></i>
+            </div>
+            <div class="setting-details">
+              <div class="setting-name">Mode Gelap</div>
+              <div class="setting-desc">Aktifkan tema gelap</div>
+            </div>
+            <div class="toggle-switch">
+              <input type="checkbox" id="theme-toggle" />
+              <label for="theme-toggle"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Support Section -->
+      <div class="setting-section">
+        <h3 class="section-title">Bantuan</h3>
+        <div class="setting-list">
+          <div class="setting-item" onclick="openHelp()">
+            <div class="setting-icon">
+              <i data-feather="help-circle"></i>
+            </div>
+            <div class="setting-details">
+              <div class="setting-name">Pusat Bantuan</div>
+              <div class="setting-desc">FAQ dan panduan</div>
+            </div>
+            <i data-feather="chevron-right" class="arrow-icon"></i>
+          </div>
+
+          <div class="setting-item" onclick="contactSupport()">
+            <div class="setting-icon">
+              <i data-feather="message-circle"></i>
+            </div>
+            <div class="setting-details">
+              <div class="setting-name">Hubungi Kami</div>
+              <div class="setting-desc">Customer service 24/7</div>
+            </div>
+            <i data-feather="chevron-right" class="arrow-icon"></i>
+          </div>
+
+          <div class="setting-item" onclick="showAbout()">
+            <div class="setting-icon">
+              <i data-feather="info"></i>
+            </div>
+            <div class="setting-details">
+              <div class="setting-name">Tentang Aplikasi</div>
+              <div class="setting-desc">Versi 1.0.0</div>
+            </div>
+            <i data-feather="chevron-right" class="arrow-icon"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logout Section -->
+      <div class="setting-section">
+        <div class="setting-list">
+          <div class="setting-item logout-item" onclick="logout()">
+            <div class="setting-icon logout-icon">
+              <i data-feather="log-out"></i>
+            </div>
+            <div class="setting-details">
+              <div class="setting-name">Keluar</div>
+              <div class="setting-desc">Logout dari akun</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>

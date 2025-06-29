@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scan QRIS - TME Wallet</title>
+  <link rel="stylesheet" href="../css/scan-qris.css" />
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script defer src="../js/scan-qris.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="scan-header">
+    <a href="home.html" class="back-icon" aria-label="Kembali ke Home">
+      <i data-feather="arrow-left"></i>
+    </a>
+    <h1 class="scan-title">Scan QRIS</h1>
+    <button class="flash-icon" id="flashBtn" aria-label="Flash">
+      <i data-feather="zap"></i>
+    </button>
+  </header>
+
+  <!-- Scanner Area -->
+  <section class="scanner-container">
+    <!-- Camera View -->
+    <div class="camera-view">
+      <div class="scan-overlay">
+        <div class="scan-frame">
+          <div class="corner top-left"></div>
+          <div class="corner top-right"></div>
+          <div class="corner bottom-left"></div>
+          <div class="corner bottom-right"></div>
+          <div class="scan-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instructions -->
+    <div class="scan-instructions">
+      <h3>Arahkan kamera ke kode QRIS</h3>
+      <p>Pastikan kode QR berada di dalam frame dan cahaya cukup terang</p>
+    </div>
+  </section>
+
+  <!-- Actions -->
+  <section class="scan-actions">
+    <button class="action-btn" id="galleryBtn">
+      <i data-feather="image"></i>
+      <span>Galeri</span>
+    </button>
+    <button class="action-btn" id="manualBtn">
+      <i data-feather="edit-3"></i>
+      <span>Input Manual</span>
+    </button>
+    <button class="action-btn" id="historyBtn">
+      <i data-feather="clock"></i>
+      <span>Riwayat</span>
+    </button>
+  </section>
+
+  <!-- Manual Input Modal -->
+  <div class="modal" id="manualModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Input Manual</h3>
+        <button class="close-btn" id="closeModal">
+          <i data-feather="x"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="qrisCode">Kode QRIS:</label>
+        <input type="text" id="qrisCode" placeholder="Masukkan kode QRIS" />
+        <button class="btn-process" id="processBtn">Proses</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    feather.replace();
+  </script>
+</body>
+</html>

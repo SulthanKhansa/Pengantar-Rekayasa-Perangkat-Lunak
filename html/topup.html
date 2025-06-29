@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Top Up TME Wallet</title>
+    <link rel="stylesheet" href="../css/topup.css" />
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script defer src="../js/topup.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="topup-header">
+      <a
+        href="home.html"
+        class="back-icon"
+        onclick="goBack(); return false;"
+        aria-label="Kembali ke Home"
+      >
+        <i data-feather="arrow-left"></i>
+      </a>
+      <h1 class="topup-title">Top Up</h1>
+      <span class="spacer"></span>
+    </header>
+
+    <!-- Main Content -->
+    <section class="topup-bank">
+      <h2>Pilih Bank</h2>
+
+      <form id="topupForm">
+        <div class="bank-options">
+          <!-- BCA -->
+          <div class="bank-option">
+            <input type="radio" id="bca" name="bank" value="BCA" required />
+            <label for="bca" class="bank-option-content">
+              <img
+                src="https://placehold.co/24x24/e0f2f7/005670?text=BCA"
+                alt="Logo BCA"
+                class="bank-logo"
+              />
+              <span>BCA</span>
+            </label>
+          </div>
+
+          <!-- Mandiri -->
+          <div class="bank-option">
+            <input
+              type="radio"
+              id="mandiri"
+              name="bank"
+              value="Mandiri"
+              required
+            />
+            <label for="mandiri" class="bank-option-content">
+              <img
+                src="https://placehold.co/24x24/e0f2f7/ff6b00?text=Mandiri"
+                alt="Logo Mandiri"
+                class="bank-logo"
+              />
+              <span>Mandiri</span>
+            </label>
+          </div>
+
+          <!-- BNI -->
+          <div class="bank-option">
+            <input type="radio" id="bni" name="bank" value="BNI" required />
+            <label for="bni" class="bank-option-content">
+              <img
+                src="https://placehold.co/24x24/e0f2f7/ff6600?text=BNI"
+                alt="Logo BNI"
+                class="bank-logo"
+              />
+              <span>BNI</span>
+            </label>
+          </div>
+
+          <!-- BRI -->
+          <div class="bank-option">
+            <input type="radio" id="bri" name="bank" value="BRI" required />
+            <label for="bri" class="bank-option-content">
+              <img
+                src="https://placehold.co/24x24/e0f2f7/004225?text=BRI"
+                alt="Logo BRI"
+                class="bank-logo"
+              />
+              <span>BRI</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Submit Section -->
+        <div class="submit-section">
+          <button type="submit" class="btn-continue">Lanjutkan</button>
+        </div>
+      </form>
+    </section>
+
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>
