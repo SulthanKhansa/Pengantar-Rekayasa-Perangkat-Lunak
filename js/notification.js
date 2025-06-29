@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Check if user is logged in
   const currentUser = localStorage.getItem("current_user");
   if (!currentUser) {
-    window.location.href = "../html/landing.html";
+    window.location.href = "../landing.html";
     return;
   }
 

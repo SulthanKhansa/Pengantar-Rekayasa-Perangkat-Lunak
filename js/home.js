@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const users = JSON.parse(localStorage.getItem("tme_users") || "{}");
 
       if (!currentUser || !users[currentUser]) {
-        window.location.href = "../html/landing.html";
+        window.location.href = "landing.html";
         return;
       }
 

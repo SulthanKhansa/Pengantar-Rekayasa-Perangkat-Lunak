@@ -47,9 +47,11 @@ function handleSubmit() {
     // Login
     if (users[username] && users[username].password === password) {
       localStorage.setItem("current_user", username);
+      console.log("Login successful, redirecting to:", "html/home.html");
       window.location.href = "html/home.html";
     } else {
       notifMsg.textContent = "Username atau password salah";
+      console.log("Login failed:", username, "User exists:", !!users[username]);
     }
   } else {
     // Register

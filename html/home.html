@@ -147,24 +147,8 @@
 
     <!-- Script -->
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        feather.replace();
-
-        const currentUser = localStorage.getItem("current_user");
-        const users = JSON.parse(localStorage.getItem("tme_users") || "{}");
-
-        if (!currentUser || !users[currentUser]) {
-          alert("Anda harus login terlebih dahulu.");
-          window.location.href = "landing.html";
-          return;
-        }
-
-        const user = users[currentUser];
-        document.getElementById("user-name").textContent = currentUser;
-        document.getElementById("user-balance").textContent = parseInt(
-          user.balance || 0
-        ).toLocaleString("id-ID");
-      });
+      feather.replace();
     </script>
+    <script src="../js/home.js"></script>
   </body>
 </html>
