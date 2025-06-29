@@ -11,11 +11,19 @@ document.addEventListener("DOMContentLoaded", function () {
       const users = JSON.parse(localStorage.getItem("tme_users") || "{}");
 
       if (!currentUser || !users[currentUser]) {
-        window.location.href = "index.html";
+        window.location.href = "../html/landing.html";
         return;
       }
 
       const user = users[currentUser];
+
+      // Ensure user has balance property
+      if (typeof user.balance === "undefined") {
+        user.balance = 100000; // Set default balance
+        users[currentUser] = user;
+        localStorage.setItem("tme_users", JSON.stringify(users));
+        console.log("Added default balance for user:", currentUser);
+      }
 
       // Update UI with user data
       const userNameEl = document.getElementById("userName");

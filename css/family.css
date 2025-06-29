@@ -137,7 +137,7 @@ body {
 /* Quick Actions */
 .quick-actions {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 15px;
   margin-bottom: 30px;
 }
@@ -170,16 +170,20 @@ body {
   color: white;
 }
 
+.action-icon i {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .action-icon.savings {
   background: linear-gradient(135deg, #10b981, #34d399);
 }
 
 .action-icon.transfer {
   background: linear-gradient(135deg, #f59e0b, #fbbf24);
-}
-
-.action-icon.goals {
-  background: linear-gradient(135deg, #8b5cf6, #a78bfa);
 }
 
 .action-btn span {
@@ -190,14 +194,18 @@ body {
 
 /* Family Sections */
 .family-section {
-  margin-bottom: 30px;
+  margin-bottom: 35px;
+}
+
+.family-section:first-of-type {
+  margin-top: 25px;
 }
 
 .section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
 }
 
 .section-title {
@@ -205,6 +213,7 @@ body {
   font-weight: 700;
   color: #2d3748;
   margin: 0;
+  letter-spacing: -0.02em;
 }
 
 .see-all-btn {
@@ -230,15 +239,17 @@ body {
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 8px;
 }
 
 .member-item {
   display: flex;
   align-items: center;
-  padding: 16px 20px;
+  padding: 18px 20px;
   border-bottom: 1px solid rgba(79, 140, 255, 0.1);
   transition: all 0.3s ease;
   cursor: pointer;
+  min-height: 70px;
 }
 
 .member-item:last-child {
@@ -303,13 +314,15 @@ body {
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 8px;
 }
 
 .activity-item {
   display: flex;
   align-items: center;
-  padding: 16px 20px;
+  padding: 18px 20px;
   border-bottom: 1px solid rgba(79, 140, 255, 0.1);
+  min-height: 70px;
 }
 
 .activity-item:last-child {
@@ -540,6 +553,28 @@ body {
     font-size: 20px;
   }
 
+  .family-section {
+    margin-bottom: 28px;
+  }
+
+  .family-section:first-of-type {
+    margin-top: 20px;
+  }
+
+  .section-header {
+    margin-bottom: 15px;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+
+  .member-item,
+  .activity-item {
+    padding: 16px 15px;
+    min-height: 65px;
+  }
+
   .quick-actions {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
@@ -553,6 +588,11 @@ body {
     width: 40px;
     height: 40px;
     margin-bottom: 8px;
+  }
+
+  .action-icon i {
+    width: 20px;
+    height: 20px;
   }
 
   .action-btn span {

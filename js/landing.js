@@ -47,7 +47,7 @@ function handleSubmit() {
     // Login
     if (users[username] && users[username].password === password) {
       localStorage.setItem("current_user", username);
-      window.location.href = "home.html";
+      window.location.href = "html/home.html";
     } else {
       notifMsg.textContent = "Username atau password salah";
     }

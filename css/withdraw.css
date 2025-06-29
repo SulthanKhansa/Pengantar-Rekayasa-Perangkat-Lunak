@@ -237,3 +237,31 @@ body::after {
   display: block;
   height: 10px;
 }
+
+/* Balance Info */
+.balance-info {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(79, 140, 255, 0.1);
+}
+
+.balance-label {
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.balance-amount {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a202c;
+  letter-spacing: -0.02em;
+}
+
+/* Method Groups */

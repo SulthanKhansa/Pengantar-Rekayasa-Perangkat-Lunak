@@ -34,9 +34,14 @@ function handleTransfer(event) {
     !users[currentUser] ||
     !users[recipient] ||
     recipient === currentUser ||
-    users[currentUser].balance < amount
+    (users[currentUser].balance || 0) < amount
   ) {
     return;
+  }
+
+  // Ensure sender has balance property
+  if (typeof users[currentUser].balance === "undefined") {
+    users[currentUser].balance = 100000; // Set default balance
   }
 
   // Process transfer

@@ -5,6 +5,9 @@ window.onload = function () {
   // Replace all `data-feather` icons with SVG icons from Feather Icons library
   feather.replace();
 
+  // Load user balance
+  loadUserBalance();
+
   // Get references to key DOM elements
   const continueBtn = document.getElementById("continueBtn"); // The "Lanjutkan" button
   const radioButtons = document.querySelectorAll('input[name="method"]'); // All radio buttons for withdrawal methods
@@ -71,3 +74,34 @@ window.onload = function () {
     });
   });
 };
+
+// Load user balance with fallback
+function loadUserBalance() {
+  const currentUser = localStorage.getItem("current_user");
+  const users = JSON.parse(localStorage.getItem("tme_users") || "{}");
+
+  console.log("Current user:", currentUser);
+  console.log("Users data:", users);
+
+  if (users[currentUser]) {
+    // Ensure user has balance property
+    if (typeof users[currentUser].balance === "undefined") {
+      users[currentUser].balance = 100000; // Set default balance
+      localStorage.setItem("tme_users", JSON.stringify(users));
+      console.log("Added default balance for user:", currentUser);
+    }
+
+    const balance = users[currentUser].balance || 0;
+    console.log("User balance:", balance);
+    const balanceElement = document.getElementById("userBalance");
+    if (balanceElement) {
+      balanceElement.textContent = `Rp ${balance.toLocaleString("id-ID")}`;
+    }
+  } else {
+    console.log("User not found in data");
+    const balanceElement = document.getElementById("userBalance");
+    if (balanceElement) {
+      balanceElement.textContent = "Rp 0";
+    }
+  }
+}

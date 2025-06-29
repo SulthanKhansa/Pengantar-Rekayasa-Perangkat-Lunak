@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Check if user is logged in
   const currentUser = localStorage.getItem("current_user");
   if (!currentUser) {
-    window.location.href = "landing.html";
+    window.location.href = "../html/landing.html";
     return;
   }
 
@@ -33,11 +33,30 @@ function loadUserBalance() {
   const currentUser = localStorage.getItem("current_user");
   const users = JSON.parse(localStorage.getItem("tme_users") || "{}");
 
+  console.log("Current user:", currentUser);
+  console.log("Users data:", users);
+
   if (users[currentUser]) {
+    // Ensure user has balance property
+    if (typeof users[currentUser].balance === "undefined") {
+      console.log("Setting default balance for user:", currentUser);
+      users[currentUser].balance = 100000; // Set default balance
+      localStorage.setItem("tme_users", JSON.stringify(users));
+    }
+
     const balance = users[currentUser].balance || 0;
-    document.getElementById(
-      "userBalance"
-    ).textContent = `Rp ${balance.toLocaleString("id-ID")}`;
+    console.log("User balance:", balance);
+
+    const balanceElement = document.getElementById("userBalance");
+    if (balanceElement) {
+      balanceElement.textContent = `Rp ${balance.toLocaleString("id-ID")}`;
+    }
+  } else {
+    console.log("User not found in data");
+    const balanceElement = document.getElementById("userBalance");
+    if (balanceElement) {
+      balanceElement.textContent = "Rp 0";
+    }
   }
 }
 
@@ -72,9 +91,18 @@ function generateToken() {
   const amount = parseInt(document.getElementById("withdrawAmount").value);
   const note = document.getElementById("tokenNote").value.trim();
 
+  console.log("Generating token for user:", currentUser);
+  console.log("Amount:", amount);
+  console.log("Current user data:", users[currentUser]);
+
   if (!amount || amount < 10000) {
     alert("Jumlah minimum withdraw adalah Rp 10.000");
     return;
+  }
+
+  // Ensure user has balance property
+  if (typeof users[currentUser].balance === "undefined") {
+    users[currentUser].balance = 100000;
   }
 
   if (!users[currentUser] || users[currentUser].balance < amount) {
@@ -86,6 +114,9 @@ function generateToken() {
   const tokenCode = generateTokenCode();
 
   // Create token object
+  const selectedMethod =
+    localStorage.getItem("selected_withdraw_method") || "Token";
+
   const token = {
     id: `token_${Date.now()}`,
     code: tokenCode,
@@ -96,10 +127,38 @@ function generateToken() {
     expiryAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(), // 24 hours
     status: "active",
     used: false,
+    withdrawMethod: selectedMethod,
   };
 
   // Deduct amount from user balance
   users[currentUser].balance -= amount;
+  console.log("New balance after deduction:", users[currentUser].balance);
+
+  // Add transaction to user history
+  if (!users[currentUser].transactions) {
+    users[currentUser].transactions = [];
+  }
+
+  const withdrawMethod =
+    localStorage.getItem("selected_withdraw_method") || "Token";
+
+  const transaction = {
+    id: Date.now().toString(),
+    type: "withdraw",
+    amount: amount,
+    description: `Tarik Tunai via ${withdrawMethod} (Token: ${tokenCode})`,
+    timestamp: new Date().toISOString(),
+    status: "success",
+    method: withdrawMethod,
+    tokenCode: tokenCode,
+  };
+
+  users[currentUser].transactions.unshift(transaction);
+  users[currentUser].moneyOut = (users[currentUser].moneyOut || 0) + amount;
+
+  console.log("Transaction added:", transaction);
+  console.log("Updated user data:", users[currentUser]);
+
   localStorage.setItem("tme_users", JSON.stringify(users));
 
   // Add token to active tokens
@@ -115,6 +174,8 @@ function generateToken() {
 
   // Clear form
   document.getElementById("tokenForm").reset();
+
+  console.log("Token generation completed successfully");
 }
 
 // Generate unique token code
@@ -311,6 +372,8 @@ document.addEventListener("click", function (event) {
 
 // Back button functionality
 function goBack() {
+  // Clear selected withdraw method when going back
+  localStorage.removeItem("selected_withdraw_method");
   window.location.href = "home.html";
 }
 

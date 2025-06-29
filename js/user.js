@@ -1,13 +1,13 @@
 // Simple user profile functionality
 function handleSignOut() {
   localStorage.removeItem("current_user");
-  window.location.href = "landing.html";
+  window.location.href = "../html/landing.html";
 }
 
 function loadUserData() {
   const currentUser = localStorage.getItem("current_user");
   if (!currentUser) {
-    window.location.href = "landing.html";
+    window.location.href = "../html/landing.html";
     return;
   }
 

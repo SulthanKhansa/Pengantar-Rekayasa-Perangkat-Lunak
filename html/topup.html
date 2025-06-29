@@ -25,10 +25,38 @@
 
     <!-- Main Content -->
     <section class="topup-bank">
-      <h2>Pilih Bank</h2>
+      <h2>Top Up Saldo</h2>
 
       <form id="topupForm">
-        <div class="bank-options">
+        <!-- Amount Input Section -->
+        <div class="amount-section">
+          <label for="amount" class="amount-label">Masukkan Jumlah</label>
+          <div class="amount-input-wrapper">
+            <span class="currency">Rp</span>
+            <input 
+              type="text" 
+              id="amount" 
+              name="amount" 
+              placeholder="0" 
+              required 
+              class="amount-input"
+              inputmode="numeric"
+            />
+          </div>
+          
+          <!-- Quick Amount Buttons -->
+          <div class="quick-amounts">
+            <button type="button" class="quick-amount-btn" data-amount="50000">50K</button>
+            <button type="button" class="quick-amount-btn" data-amount="100000">100K</button>
+            <button type="button" class="quick-amount-btn" data-amount="200000">200K</button>
+            <button type="button" class="quick-amount-btn" data-amount="500000">500K</button>
+          </div>
+        </div>
+
+        <!-- Bank Selection -->
+        <div class="bank-selection">
+          <label class="bank-label">Pilih Metode Pembayaran</label>
+          <div class="bank-options">
           <!-- BCA -->
           <div class="bank-option">
             <input type="radio" id="bca" name="bank" value="BCA" required />
@@ -90,7 +118,10 @@
 
         <!-- Submit Section -->
         <div class="submit-section">
-          <button type="submit" class="btn-continue">Lanjutkan</button>
+          <div class="amount-display">
+            <span>Total: Rp <span id="total-display">0</span></span>
+          </div>
+          <button type="submit" class="btn-continue" disabled>Lanjutkan Pembayaran</button>
         </div>
       </form>
     </section>

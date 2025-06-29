@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Check if user is logged in
   const currentUser = localStorage.getItem("current_user");
   if (!currentUser) {
-    window.location.href = "landing.html";
+    window.location.href = "../html/landing.html";
     return;
   }
 
@@ -273,7 +273,14 @@ function addToSavings() {
 
   // Check user balance
   const users = JSON.parse(localStorage.getItem("tme_users") || "{}");
-  if (!users[currentUser] || users[currentUser].balance < amount) {
+
+  // Ensure user has balance property
+  if (users[currentUser] && typeof users[currentUser].balance === "undefined") {
+    users[currentUser].balance = 100000; // Set default balance
+    localStorage.setItem("tme_users", JSON.stringify(users));
+  }
+
+  if (!users[currentUser] || (users[currentUser].balance || 0) < amount) {
     alert("Saldo tidak mencukupi");
     return;
   }
@@ -336,7 +343,14 @@ function sendQuickTransfer() {
 
   // Check user balance
   const users = JSON.parse(localStorage.getItem("tme_users") || "{}");
-  if (!users[currentUser] || users[currentUser].balance < amount) {
+
+  // Ensure user has balance property
+  if (users[currentUser] && typeof users[currentUser].balance === "undefined") {
+    users[currentUser].balance = 100000; // Set default balance
+    localStorage.setItem("tme_users", JSON.stringify(users));
+  }
+
+  if (!users[currentUser] || (users[currentUser].balance || 0) < amount) {
     alert("Saldo tidak mencukupi");
     return;
   }
@@ -373,10 +387,6 @@ function sendQuickTransfer() {
 
   closeQuickTransfer();
   alert("Transfer berhasil!");
-}
-
-function openFamilyGoals() {
-  alert("Fitur Target Bersama akan segera hadir!");
 }
 
 function openFamilyHistory() {

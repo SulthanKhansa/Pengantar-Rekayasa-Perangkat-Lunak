@@ -83,6 +83,102 @@ body {
   background-clip: text;
 }
 
+/* Amount Section */
+.amount-section {
+  margin-bottom: 30px;
+}
+
+.amount-label {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 12px;
+}
+
+.amount-input-wrapper {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.currency {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  font-weight: 600;
+  color: #4a5568;
+  z-index: 1;
+}
+
+.amount-input {
+  width: 100%;
+  padding: 16px 16px 16px 50px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2d3748;
+  background: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.amount-input:focus {
+  outline: none;
+  border-color: #4f8cff;
+  box-shadow: 0 0 0 3px rgba(79, 140, 255, 0.1);
+}
+
+.amount-input::placeholder {
+  color: #a0aec0;
+  font-weight: 400;
+}
+
+/* Quick Amount Buttons */
+.quick-amounts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.quick-amount-btn {
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #4a5568;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.quick-amount-btn:hover {
+  border-color: #4f8cff;
+  background: rgba(79, 140, 255, 0.05);
+  color: #4f8cff;
+}
+
+.quick-amount-btn.active {
+  border-color: #4f8cff;
+  background: #4f8cff;
+  color: white;
+}
+
+/* Bank Selection */
+.bank-selection {
+  margin-bottom: 30px;
+}
+
+.bank-label {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 15px;
+}
+
 /* Bank Options */
 .bank-options {
   margin: 20px 0;
@@ -177,11 +273,24 @@ body {
 
 /* Submit Section */
 .submit-section {
-  max-width: 400px;
-  margin: 20px auto 40px auto;
-  padding: 0 16px;
-  display: flex;
-  justify-content: center;
+  margin-top: 20px;
+  padding: 20px 0;
+  border-top: 1px solid #e2e8f0;
+}
+
+.amount-display {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.amount-display span {
+  background: linear-gradient(135deg, #4f8cff, #6ee7f8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .btn-continue {
@@ -197,6 +306,18 @@ body {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+}
+
+.btn-continue:disabled {
+  background: #e2e8f0;
+  color: #a0aec0;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-continue:disabled::before {
+  display: none;
 }
 
 .btn-continue::before {
@@ -244,8 +365,37 @@ body {
     font-size: 20px;
   }
 
+  .amount-input {
+    font-size: 16px;
+    padding: 14px 14px 14px 45px;
+  }
+
+  .currency {
+    left: 14px;
+    font-size: 16px;
+  }
+
+  .quick-amounts {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .quick-amount-btn {
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+
+  .bank-option-content {
+    padding: 14px 16px;
+  }
+
   .submit-section {
-    margin: 15px auto 30px auto;
+    margin-top: 15px;
+    padding: 15px 0;
+  }
+
+  .amount-display {
+    font-size: 16px;
   }
 }
 
