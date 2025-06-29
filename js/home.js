@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const users = JSON.parse(localStorage.getItem("tme_users") || "{}");
 
       if (!currentUser || !users[currentUser]) {
-        window.location.href = "landing.html";
+        window.location.href = "../landing.html";
         return;
       }
 
@@ -26,14 +26,14 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       // Update UI with user data
-      const userNameEl = document.getElementById("userName");
-      const userBalanceEl = document.getElementById("userBalance");
+      const userNameEl = document.getElementById("user-name");
+      const userBalanceEl = document.getElementById("user-balance");
       const moneyInEl = document.getElementById("moneyIn");
       const moneyOutEl = document.getElementById("moneyOut");
 
       if (userNameEl) userNameEl.textContent = user.fullName || currentUser;
       if (userBalanceEl)
-        userBalanceEl.textContent = `Rp ${(user.balance || 0).toLocaleString(
+        userBalanceEl.textContent = `${(user.balance || 0).toLocaleString(
           "id-ID"
         )}`;
       if (moneyInEl)
@@ -59,18 +59,25 @@ function initializeShortcuts() {
   const shortcuts = [
     { icon: "wifi", text: "Internet" },
     { icon: "zap", text: "Listrik" },
-    { icon: "users", text: "Family" },
+    {
+      icon: "users",
+      text: "Family",
+      onclick: "window.location.href='family.html'",
+    },
     { icon: "tv", text: "TV Kabel" },
     { icon: "droplet", text: "Air" },
     { icon: "target", text: "Games" },
     { icon: "book", text: "Pendidikan" },
-    { icon: "star", text: "TME Points" },
+    { icon: "star", text: "Points" },
   ];
 
   const shortcutSection = document.querySelector(".shortcuts");
   shortcuts.forEach((item) => {
     const button = document.createElement("button");
     button.className = "shortcut-btn";
+    if (item.onclick) {
+      button.setAttribute("onclick", item.onclick);
+    }
     button.innerHTML = `
       <i data-feather="${item.icon}"></i>
       <span>${item.text}</span>
@@ -82,12 +89,14 @@ function initializeShortcuts() {
 
 function initializePromos() {
   const promos = [
-    { src: "../img/topup.jpeg", alt: "Promo 1" },
-    { src: "../img/listrik.webp", alt: "Promo 2" },
-    { src: "../img/pulsa.jpeg", alt: "Promo 3" },
+    { src: "../img/topup.jpeg", alt: "Promo Top Up" },
+    { src: "../img/listrik.webp", alt: "Promo Listrik" },
+    { src: "../img/game.jpg", alt: "Promo Games" },
+    { src: "../img/pulsa2.jpeg", alt: "Promo Pulsa" },
   ];
 
   const promoList = document.querySelector(".promo-list");
+  // Add promos twice for scrolling effect
   promos.forEach((promo) => {
     promoList.innerHTML += `
       <div class="promo-card">
